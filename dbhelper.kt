@@ -49,6 +49,11 @@ class DatabaseHelper(context: Context) :
         return u>0
     }
 
+    fun delete(rollno: Int): Int{
+        val db = this.writableDatabase
+        return db.delete(TABLE_STUDENTS,"$COL_ROLL_NO = ?", arrayOf(rollno.toString()))
+    }
+
     companion object {
         private const val DATABASE_VERSION = 1
         private const val DATABASE_NAME = "student.db"
